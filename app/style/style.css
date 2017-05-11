@@ -1,0 +1,12 @@
+.paddingTop{
+    padding-top:10px;
+}
+.marginTop{
+    margin-top:10px;
+}
+.movieListItem{
+    cursor: pointer;
+}
+.movieListItem:hover{
+    background-color: #eee;
+}

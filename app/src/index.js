@@ -32,7 +32,7 @@ class App extends React.Component{
     render(){
         return (
             <div>
-                <SearchBar/>
+                <SearchBar onSearchTermChange={value => this.search(value)}/>
                 <MovieDetails movie={this.state.selectedMovie}/>
                 <MovieList onMovieClick= {selectedMovie => this.setState({selectedMovie}) } movies={this.state.movies} />
             </div>

@@ -5,7 +5,7 @@ const MovieListItem = (props) => {
     //or props.onVideoClick
     return (
         //When div is clicked pass the current  to the funtion onMovieClick
-        <div onClick={ ()=>  props.onMovieClick(props.movie) } className="col-md-6 list-group-item">
+        <div onClick={ ()=>  props.onMovieClick(props.movie) } className="col-md-6 list-group-item movieListItem">
             <div className="video-list media">
                 <div className="media-left">
                     <img src={props.movie.Poster} height="150px" width="150px"/><br/>

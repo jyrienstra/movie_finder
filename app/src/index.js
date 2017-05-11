@@ -2,6 +2,7 @@
 import React from  'react'; //Create and manage components
 import ReactDOM from 'react-dom'; //Use to create and render our component to the DOM
 import Request from 'superagent'; //Needed for JSON loading
+import _ from 'lodash'; //need this for movie delaying
 
 //Import own created components
 import SearchBar from './components/search_bar';
@@ -30,9 +31,18 @@ class App extends React.Component{
     //It uses the JSX library, javascript code that produces html (usages of tags in javascript) - makes code a lot cleaner
     //Webpack and Babble translate it to HTML
     render(){
+        //Search every 250 ms using lodash.debounce
+        //Prevents lagging in the page when searching
+        //use anonymous function so we can call this.search (still in our scope)
+        const searchWait = _.debounce( (value) => {
+            this.search(value)
+        }, 250);
+
         return (
+            //using lodash .debounce function we can delay the search, eg every 250ms
+            //we do this to prevent lagging of the pag
             <div>
-                <SearchBar onSearchTermChange={value => this.search(value)}/>
+                <SearchBar onSearchTermChange={value => searchWait(value)}/>
                 <MovieDetails movie={this.state.selectedMovie}/>
                 <MovieList onMovieClick= {selectedMovie => this.setState({selectedMovie}) } movies={this.state.movies} />
             </div>
